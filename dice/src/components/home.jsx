@@ -11,7 +11,7 @@ function Home() {
     if (storedamount) setAmount(Number(storedamount));
 }, []);
 
-// Update amount in localStorage
+
 useEffect(() => {
     localStorage.setItem("amount", amount);
 }, [amount]);
@@ -25,10 +25,10 @@ const handleRollDice = async () => {
       return;
   }
 
-  const clientSeed = generateClientSeed(); // Generate a new client seed
+  const clientSeed = generateClientSeed(); 
 
   try {
-      const response = await fetch("http://localhost:8000/roll-dice", {
+      const response = await fetch("https://dice-game-4k9v.vercel.app/roll-dice", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ betamount: Number(betamount), amount, clientSeed }),
