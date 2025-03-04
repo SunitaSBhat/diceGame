@@ -4,7 +4,14 @@ const crypto = require("crypto");
 const app=express();
 const port= 8000;
 app.use(express.json()); 
-app.use(cors());
+app.use(cors(
+    {
+    origin:["https://deploy-mern-1whq.vercel.app"],
+    methods:["POST", "GET"],
+    credentials:true
+    }
+
+));
 const SERVER_SEED = "secret-server-seed";
 app.get("/", (req, res)=>{
     return res.json("server running");
